@@ -14,6 +14,7 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 public class OfferItem {
 
@@ -134,20 +135,15 @@ public class OfferItem {
         } else if (!product.getProductId().equals(other.product.getProductId())) {
             return false;
         }
-        if (product.getProductType() != other.product.getProductType()) {
+        if (!Objects.equals(product.getProductType(), other.product.getProductType())) {
             return false;
         }
         if (quantity != other.quantity) {
             return false;
         }
         if (totalCost == null) {
-            if (other.totalCost != null) {
-                return false;
-            }
-        } else if (!totalCost.equals(other.totalCost)) {
-            return false;
-        }
-        return true;
+            return other.totalCost == null;
+        } else return totalCost.equals(other.totalCost);
     }
 
     /**
@@ -177,7 +173,7 @@ public class OfferItem {
         } else if (!product.getProductId().equals(other.product.getProductId())) {
             return false;
         }
-        if (product.getProductType() != other.product.getProductType()) {
+        if (!Objects.equals(product.getProductType(), other.product.getProductType())) {
             return false;
         }
 
