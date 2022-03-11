@@ -4,29 +4,32 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Product {// product
+
     String productId;
     String productName;
     Date productSnapshotDate;
     String productType;
-    BigDecimal productPrice;
+    Money price;
 
 
-    private String currency;
-
-
-    public Product() {
+    private Product() {
     }
 
-    public String getCurrency() {
-        return currency;
+    public Product(String productId, String productName, Date productSnapshotDate, String productType, Money price) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productSnapshotDate = productSnapshotDate;
+        this.productType = productType;
+        this.price = price;
     }
+
 
     public String getProductId() {
         return productId;
     }
 
     public BigDecimal getProductPrice() {
-        return productPrice;
+        return price.getAmount();
     }
 
     public String getProductName() {
