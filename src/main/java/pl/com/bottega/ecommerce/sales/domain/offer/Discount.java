@@ -22,7 +22,11 @@ public class Discount {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getValue(), getDiscountCause());
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (discountCause == null ? 0 : discountCause.hashCode());
+        result = prime * result + (money == null ? 0 : money.hashCode());
+        return result;
     }
 
     public Money getValue() {
