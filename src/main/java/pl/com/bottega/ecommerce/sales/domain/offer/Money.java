@@ -11,6 +11,22 @@ public class Money {
         this.currency = currency;
     }
 
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,21 +43,5 @@ public class Money {
         result = prime * result + (amount == null ? 0 : amount.hashCode());
         result = prime * result + (currency == null ? 0 : currency.hashCode());
         return result;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
     }
 }

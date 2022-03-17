@@ -11,6 +11,14 @@ public class Discount {
         this.discountCause = discountCause;
     }
 
+    public Money getValue() {
+        return money;
+    }
+
+    public String getDiscountCause() {
+        return discountCause;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -26,13 +34,5 @@ public class Discount {
         result = prime * result + (discountCause == null ? 0 : discountCause.hashCode());
         result = prime * result + (money == null ? 0 : money.hashCode());
         return result;
-    }
-
-    public Money getValue() {
-        return money;
-    }
-
-    public String getDiscountCause() {
-        return discountCause;
     }
 }

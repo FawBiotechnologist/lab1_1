@@ -21,31 +21,6 @@ public class Offer {
         return unavailableItems;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (availableItems == null ? 0 : availableItems.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Offer other = (Offer) obj;
-        if (availableItems == null) {
-            return other.availableItems == null;
-        } else return availableItems.equals(other.availableItems);
-    }
-
     /**
      * @param seenOffer
      * @param delta     acceptable difference in percent
@@ -76,6 +51,31 @@ public class Offer {
             }
         }
         return null;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (availableItems == null ? 0 : availableItems.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Offer other = (Offer) obj;
+        if (availableItems == null) {
+            return other.availableItems == null;
+        } else return availableItems.equals(other.availableItems);
     }
 
 }

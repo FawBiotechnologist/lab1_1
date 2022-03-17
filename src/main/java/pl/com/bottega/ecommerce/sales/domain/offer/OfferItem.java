@@ -60,6 +60,42 @@ public class OfferItem {
         return totalCost;
     }
 
+    /**
+     * @param other
+     * @param delta acceptable percentage difference
+     * @return
+     */
+    public boolean sameAs(OfferItem other, double delta) {
+        //null check
+        if (product == null) {
+            if (other.getProduct() != null) {
+                return false;
+            }
+            //other products
+        } else if (!product.equals(other.getProduct())) {
+            return false;
+        }
+        //other quantities
+        if (quantity != other.quantity) {
+            return false;
+        }
+        //acceptable cost range
+        BigDecimal max;
+        BigDecimal min;
+        if (totalCost.getAmount().compareTo(other.getTotalCost().getAmount()) > 0) {
+            max = totalCost.getAmount();
+            min = other.getTotalCost().getAmount();
+        } else {
+            max = other.getTotalCost().getAmount();
+            min = totalCost.getAmount();
+        }
+
+        BigDecimal difference = max.subtract(min);
+        BigDecimal acceptableDelta = max.multiply(BigDecimal.valueOf(delta / 100));
+
+        return acceptableDelta.compareTo(difference) > 0;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -103,42 +139,6 @@ public class OfferItem {
         if (totalCost == null) {
             return other.totalCost == null;
         } else return totalCost.equals(other.getTotalCost());
-    }
-
-    /**
-     * @param other
-     * @param delta acceptable percentage difference
-     * @return
-     */
-    public boolean sameAs(OfferItem other, double delta) {
-        //null check
-        if (product == null) {
-            if (other.getProduct() != null) {
-                return false;
-            }
-            //other products
-        } else if (!product.equals(other.getProduct())) {
-            return false;
-        }
-        //other quantities
-        if (quantity != other.quantity) {
-            return false;
-        }
-        //acceptable cost range
-        BigDecimal max;
-        BigDecimal min;
-        if (totalCost.getAmount().compareTo(other.getTotalCost().getAmount()) > 0) {
-            max = totalCost.getAmount();
-            min = other.getTotalCost().getAmount();
-        } else {
-            max = other.getTotalCost().getAmount();
-            min = totalCost.getAmount();
-        }
-
-        BigDecimal difference = max.subtract(min);
-        BigDecimal acceptableDelta = max.multiply(BigDecimal.valueOf(delta / 100));
-
-        return acceptableDelta.compareTo(difference) > 0;
     }
 
 }
