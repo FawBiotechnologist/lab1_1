@@ -1,6 +1,5 @@
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Offer {
