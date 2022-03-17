@@ -3,8 +3,8 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.math.BigDecimal;
 
 public class Discount {
-    final Money money;// discount
-    String discountCause;
+    private final Money money;// discount
+    private final String discountCause;
 
     public Discount(Money money, String discountCause) {
         this.money = money;
