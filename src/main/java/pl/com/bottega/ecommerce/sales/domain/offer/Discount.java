@@ -3,6 +3,7 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.util.Objects;
 
 public class Discount {
+
     private final Money money;// discount
     private final String discountCause;
 
