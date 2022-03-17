@@ -32,13 +32,18 @@ public class OfferItem {
         this.product = product;
         this.quantity = quantity;
         this.discount = discount;
-
+        String discountCurrency = null;
         BigDecimal discountValue = new BigDecimal(0);
         if (this.discount != null) {
             discountValue = discountValue.subtract(discount.getValue().getAmount());
+            discountCurrency = discount.getValue().getCurrency();
         }
-
-        this.totalCost = new Money(this.product.getProductPrice().getAmount().multiply(new BigDecimal(quantity)).subtract(discountValue), null);
+        //this looks bad may need refactorization to be more readable
+        this.totalCost = new Money(
+                this.product.getProductPrice().getAmount().multiply(
+                        new BigDecimal(quantity)).subtract(discountValue), (
+                                product.getProductPrice().getCurrency().equals(discountCurrency) ?
+                                        discountCurrency : null));
     }
 
     public Product getProduct() {
@@ -80,35 +85,18 @@ public class OfferItem {
             return false;
         }
         OfferItem other = (OfferItem) obj;
-        if (discount.getValue() == null) {
-            if (other.discount.getValue() != null) {
+        if (discount == null) {
+            if (other.getDiscount() != null) {
                 return false;
             }
-        } else if (!discount.getValue().equals(other.discount.getValue())) {
+        } else if (!discount.equals(other.getDiscount())) {
             return false;
         }
-        if (product.getName() == null) {
-            if (other.product.getName() != null) {
+        if (product == null) {
+            if (other.getProduct() != null) {
                 return false;
             }
-        } else if (!product.getName().equals(other.product.getName())) {
-            return false;
-        }
-        if (product.getProductPrice() == null) {
-            if (other.product.getProductPrice() != null) {
-                return false;
-            }
-        } else if (!product.getProductPrice().equals(other.product.getProductPrice())) {
-            return false;
-        }
-        if (product.getId() == null) {
-            if (other.product.getId() != null) {
-                return false;
-            }
-        } else if (!product.getId().equals(other.product.getId())) {
-            return false;
-        }
-        if (!Objects.equals(product.getType(), other.product.getType())) {
+        } else if (!product.equals(other.getProduct())) {
             return false;
         }
         if (quantity != other.quantity) {
@@ -116,7 +104,7 @@ public class OfferItem {
         }
         if (totalCost == null) {
             return other.totalCost == null;
-        } else return totalCost.equals(other.totalCost);
+        } else return totalCost.equals(other.getTotalCost());
     }
 
     /**
