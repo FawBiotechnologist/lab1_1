@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class Product {// product
 
-    String productId;
-    String productName;
-    Date productSnapshotDate;
-    String productType;
-    Money price;
+    private String productId;
+    private String productName;
+    private Date productSnapshotDate;
+    private String productType;
+    private Money price;
 
 
     private Product() {
