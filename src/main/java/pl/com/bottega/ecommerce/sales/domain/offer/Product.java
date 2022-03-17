@@ -29,7 +29,8 @@ public class Product {// product
         result = prime * result + (type == null ? 0 : type.hashCode());
         result = prime * result + (snapshotDate == null ? 0 : snapshotDate.hashCode());
         result = prime * result + (price == null ? 0 : price.hashCode());
-        return result;    }
+        return result;
+    }
 
     private Product() {
     }

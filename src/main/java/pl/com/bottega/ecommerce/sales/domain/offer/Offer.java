@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Offer {
 
-    private List<OfferItem> availableItems = new ArrayList<OfferItem>();
+    private final List<OfferItem> availableItems;
 
-    private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
+    private final List<OfferItem> unavailableItems;
 
     public Offer(List<OfferItem> availabeItems, List<OfferItem> unavailableItems) {
         this.availableItems = availabeItems;
@@ -43,20 +43,13 @@ public class Offer {
         }
         Offer other = (Offer) obj;
         if (availableItems == null) {
-            if (other.availableItems != null) {
-                return false;
-            }
-        } else if (!availableItems.equals(other.availableItems)) {
-            return false;
-        }
-        return true;
+            return other.availableItems == null;
+        } else return availableItems.equals(other.availableItems);
     }
 
     /**
-     *
      * @param seenOffer
-     * @param delta
-     *            acceptable difference in percent
+     * @param delta     acceptable difference in percent
      * @return
      */
     public boolean sameAs(Offer seenOffer, double delta) {
@@ -65,7 +58,7 @@ public class Offer {
         }
 
         for (OfferItem item : availableItems) {
-            OfferItem sameItem = seenOffer.findItem(item.getProductId());
+            OfferItem sameItem = seenOffer.findItem(item.getProduct().getId());
             if (sameItem == null) {
                 return false;
             }
@@ -79,7 +72,7 @@ public class Offer {
 
     private OfferItem findItem(String productId) {
         for (OfferItem item : availableItems) {
-            if (item.getProductId().equals(productId)) {
+            if (item.getProduct().getId().equals(productId)) {
                 return item;
             }
         }
