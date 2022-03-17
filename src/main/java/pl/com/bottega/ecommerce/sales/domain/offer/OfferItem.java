@@ -42,7 +42,7 @@ public class OfferItem {
     }
 
     public String getProductId() {
-        return product.getProductId();
+        return product.getId();
     }
 
     public BigDecimal getProductPrice() {
@@ -50,15 +50,15 @@ public class OfferItem {
     }
 
     public String getProductName() {
-        return product.getProductName();
+        return product.getName();
     }
 
     public Date getProductSnapshotDate() {
-        return product.getProductSnapshotDate();
+        return product.getSnapshotDate();
     }
 
     public String getProductType() {
-        return product.getProductType();
+        return product.getType();
     }
 
     public BigDecimal getTotalCost() {
@@ -86,10 +86,10 @@ public class OfferItem {
         final int prime = 31;
         int result = 1;
         result = prime * result + (discount.getValue() == null ? 0 : discount.getValue().hashCode());
-        result = prime * result + (product.getProductName() == null ? 0 : product.getProductName().hashCode());
+        result = prime * result + (product.getName() == null ? 0 : product.getName().hashCode());
         result = prime * result + (product.getProductPrice() == null ? 0 : product.getProductPrice().hashCode());
-        result = prime * result + (product.getProductId() == null ? 0 : product.getProductId().hashCode());
-        result = prime * result + (product.getProductType() == null ? 0 : product.getProductType().hashCode());
+        result = prime * result + (product.getId() == null ? 0 : product.getId().hashCode());
+        result = prime * result + (product.getType() == null ? 0 : product.getType().hashCode());
         result = prime * result + quantity;
         result = prime * result + (totalCost == null ? 0 : totalCost.hashCode());
         return result;
@@ -114,11 +114,11 @@ public class OfferItem {
         } else if (!discount.getValue().equals(other.discount.getValue())) {
             return false;
         }
-        if (product.getProductName() == null) {
-            if (other.product.getProductName() != null) {
+        if (product.getName() == null) {
+            if (other.product.getName() != null) {
                 return false;
             }
-        } else if (!product.getProductName().equals(other.product.getProductName())) {
+        } else if (!product.getName().equals(other.product.getName())) {
             return false;
         }
         if (product.getProductPrice() == null) {
@@ -128,14 +128,14 @@ public class OfferItem {
         } else if (!product.getProductPrice().equals(other.product.getProductPrice())) {
             return false;
         }
-        if (product.getProductId() == null) {
-            if (other.product.getProductId() != null) {
+        if (product.getId() == null) {
+            if (other.product.getId() != null) {
                 return false;
             }
-        } else if (!product.getProductId().equals(other.product.getProductId())) {
+        } else if (!product.getId().equals(other.product.getId())) {
             return false;
         }
-        if (!Objects.equals(product.getProductType(), other.product.getProductType())) {
+        if (!Objects.equals(product.getType(), other.product.getType())) {
             return false;
         }
         if (quantity != other.quantity) {
@@ -152,11 +152,11 @@ public class OfferItem {
      * @return
      */
     public boolean sameAs(OfferItem other, double delta) {
-        if (product.getProductName() == null) {
-            if (other.product.getProductName() != null) {
+        if (product.getName() == null) {
+            if (other.product.getName() != null) {
                 return false;
             }
-        } else if (!product.getProductName().equals(other.product.getProductName())) {
+        } else if (!product.getName().equals(other.product.getName())) {
             return false;
         }
         if (product.getProductPrice() == null) {
@@ -166,14 +166,14 @@ public class OfferItem {
         } else if (!product.getProductPrice().equals(other.product.getProductPrice())) {
             return false;
         }
-        if (product.getProductId() == null) {
-            if (other.product.getProductId() != null) {
+        if (product.getId() == null) {
+            if (other.product.getId() != null) {
                 return false;
             }
-        } else if (!product.getProductId().equals(other.product.getProductId())) {
+        } else if (!product.getId().equals(other.product.getId())) {
             return false;
         }
-        if (!Objects.equals(product.getProductType(), other.product.getProductType())) {
+        if (!Objects.equals(product.getType(), other.product.getType())) {
             return false;
         }
 
