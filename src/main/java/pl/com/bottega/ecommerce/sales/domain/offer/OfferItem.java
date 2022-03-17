@@ -35,7 +35,7 @@ public class OfferItem {
 
         BigDecimal discountValue = new BigDecimal(0);
         if (this.discount != null) {
-            discountValue = discountValue.subtract(discount.getValue());
+            discountValue = discountValue.subtract(discount.getValue().getAmount());
         }
 
         this.totalCost = new Money(this.product.getProductPrice().multiply(new BigDecimal(quantity)).subtract(discountValue), null);
@@ -70,7 +70,7 @@ public class OfferItem {
     }
 
     public BigDecimal getDiscount() {
-        return discount.getValue();
+        return discount.getValue().getAmount();
     }
 
     public String getDiscountCause() {
