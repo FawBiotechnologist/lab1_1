@@ -45,51 +45,29 @@ public class OfferItem {
         return product.getId();
     }
 
-    public BigDecimal getProductPrice() {
-        return product.getProductPrice().getAmount();
+
+    public Product getProduct() {
+        return product;
     }
 
-    public String getProductName() {
-        return product.getName();
-    }
-
-    public Date getProductSnapshotDate() {
-        return product.getSnapshotDate();
-    }
-
-    public String getProductType() {
-        return product.getType();
-    }
-
-    public BigDecimal getTotalCost() {
-        return totalCost.getAmount();
-    }
-
-    public String getTotalCostCurrency() {
-        return totalCost.getCurrency();
-    }
-
-    public BigDecimal getDiscount() {
-        return discount.getValue().getAmount();
-    }
-
-    public String getDiscountCause() {
-        return discount.getDiscountCause();
+    public Discount getDiscount() {
+        return discount;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
+    public Money getTotalCost() {
+        return totalCost;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (discount.getValue() == null ? 0 : discount.getValue().hashCode());
-        result = prime * result + (product.getName() == null ? 0 : product.getName().hashCode());
-        result = prime * result + (product.getProductPrice() == null ? 0 : product.getProductPrice().hashCode());
-        result = prime * result + (product.getId() == null ? 0 : product.getId().hashCode());
-        result = prime * result + (product.getType() == null ? 0 : product.getType().hashCode());
+        result = prime * result + (discount.getValue() == null ? 0 : discount.hashCode());
+        result = prime * result + (product == null ? 0 : product.hashCode());
         result = prime * result + quantity;
         result = prime * result + (totalCost == null ? 0 : totalCost.hashCode());
         return result;
